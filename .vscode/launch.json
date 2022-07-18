@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TelecomprojectApplication<telecomproject>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.groupproject.telecomproject.TelecomprojectApplication",
+            "projectName": "telecomproject",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
