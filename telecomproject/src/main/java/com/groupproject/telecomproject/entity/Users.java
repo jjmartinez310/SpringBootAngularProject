@@ -23,6 +23,12 @@ public class Users {
     @Column(name="last_name")
     private String last_name;
 
+    @Column(name="username")
+    private String username;
+
+    @Column(name="password")
+    private String password;
+
     @Column(name="phone_1")
     private String phone_1;
 
@@ -47,11 +53,13 @@ public class Users {
 
     }
 
-    public Users(int userid, String first_name, String last_name, String phone_1, String phone_2, String phone_3,
+    public Users(int userid, String first_name, String last_name, String username, String password, String phone_1, String phone_2, String phone_3,
             String phone_4, String phone_5, String phone_6) {
         this.userid = userid;
         this.first_name = first_name;
         this.last_name = last_name;
+        this.username = username;
+        this.password = password;
         this.phone_1 = phone_1;
         this.phone_2 = phone_2;
         this.phone_3 = phone_3;
@@ -84,6 +92,22 @@ public class Users {
 
     public void setLast_name(String last_name) {
         this.last_name = last_name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getPhone_1() {
@@ -138,7 +162,7 @@ public class Users {
 
     @Override
     public String toString() {
-        return "Users [first_name=" + first_name + ", last_name=" + last_name + ", phone_1=" + phone_1 + ", phone_2="
+        return "Users [first_name=" + first_name + ", last_name=" + last_name + ", username=" + username + ", password=" + password + ", phone_1=" + phone_1 + ", phone_2="
                 + phone_2 + ", phone_3=" + phone_3 + ", phone_4=" + phone_4 + ", phone_5=" + phone_5 + ", phone_6="
                 + phone_6 + ", userid=" + userid + "]";
     }
