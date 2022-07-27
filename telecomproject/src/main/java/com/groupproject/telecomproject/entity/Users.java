@@ -14,8 +14,8 @@ public class Users {
     // define fields
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="userid")
-    private int userid;
+    @Column(name="user_id")
+    private int user_id;
     
     @Column(name="first_name")
     private String first_name;
@@ -26,26 +26,8 @@ public class Users {
     @Column(name="username")
     private String username;
 
-    @Column(name="password")
-    private String password;
-
-    @Column(name="phone_1")
-    private String phone_1;
-
-    @Column(name="phone_2")
-    private String phone_2;
-
-    @Column(name="phone_3")
-    private String phone_3;
-
-    @Column(name="phone_4")
-    private String phone_4;
-
-    @Column(name="phone_5")
-    private String phone_5;
-
-    @Column(name="phone_6")
-    private String phone_6;
+    @Column(name="pass")
+    private String pass;
 
     // define constructors
 
@@ -53,29 +35,22 @@ public class Users {
 
     }
 
-    public Users(int userid, String first_name, String last_name, String username, String password, String phone_1, String phone_2, String phone_3,
-            String phone_4, String phone_5, String phone_6) {
-        this.userid = userid;
+    public Users(int user_id, String first_name, String last_name, String username, String pass) {
+        this.user_id = user_id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.username = username;
-        this.password = password;
-        this.phone_1 = phone_1;
-        this.phone_2 = phone_2;
-        this.phone_3 = phone_3;
-        this.phone_4 = phone_4;
-        this.phone_5 = phone_5;
-        this.phone_6 = phone_6;
+        this.pass = pass;
     }
    
     //define getter/setter
 
-    public int getUserid() {
-        return userid;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public String getFirst_name() {
@@ -102,69 +77,19 @@ public class Users {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPass() {
+        return pass;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPhone_1() {
-        return phone_1;
-    }
-
-    public void setPhone_1(String phone_1) {
-        this.phone_1 = phone_1;
-    }
-
-    public String getPhone_2() {
-        return phone_2;
-    }
-
-    public void setPhone_2(String phone_2) {
-        this.phone_2 = phone_2;
-    }
-
-    public String getPhone_3() {
-        return phone_3;
-    }
-
-    public void setPhone_3(String phone_3) {
-        this.phone_3 = phone_3;
-    }
-
-    public String getPhone_4() {
-        return phone_4;
-    }
-
-    public void setPhone_4(String phone_4) {
-        this.phone_4 = phone_4;
-    }
-
-    public String getPhone_5() {
-        return phone_5;
-    }
-
-    public void setPhone_5(String phone_5) {
-        this.phone_5 = phone_5;
-    }
-
-    public String getPhone_6() {
-        return phone_6;
-    }
-
-    public void setPhone_6(String phone_6) {
-        this.phone_6 = phone_6;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
     //define toString
 
     @Override
     public String toString() {
-        return "Users [first_name=" + first_name + ", last_name=" + last_name + ", username=" + username + ", password=" + password + ", phone_1=" + phone_1 + ", phone_2="
-                + phone_2 + ", phone_3=" + phone_3 + ", phone_4=" + phone_4 + ", phone_5=" + phone_5 + ", phone_6="
-                + phone_6 + ", userid=" + userid + "]";
+        return "Users [first_name=" + first_name + ", last_name=" + last_name + ", username=" + username + ", pass=" + pass + ", user_id=" + user_id + "]";
     }
 
 

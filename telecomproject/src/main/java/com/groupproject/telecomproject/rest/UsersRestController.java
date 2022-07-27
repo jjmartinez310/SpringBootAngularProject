@@ -33,13 +33,13 @@ public class UsersRestController {
         return usersService.findAll();
     }
 
-    // add mapping for GET /users/{userid}
-    @GetMapping("/users/{userid}")
-    public Users getUsers(@PathVariable int userid) {
-        Users user = usersService.findById(userid);
-    //throw exception if userid not found
+    // add mapping for GET /users/{user_id}
+    @GetMapping("/users/{user_id}")
+    public Users getUsers(@PathVariable int user_id) {
+        Users user = usersService.findById(user_id);
+    //throw exception if user_id not found
         if (user == null){
-            throw new RuntimeException("userid Not Found" + userid);
+            throw new RuntimeException("user_id Not Found" + user_id);
         }
 
         return user;
@@ -51,7 +51,7 @@ public class UsersRestController {
         //also just in case they pass an id in JSON... set id to 0
         //this is to force a save of new item...instead of update
 
-        user.setUserid(0);
+        user.setUser_id(0);
 
         usersService.save(user);
         return user;
@@ -64,16 +64,16 @@ public class UsersRestController {
         return user;
     }
 
-    // add mapping for DELETE /users/{userid} - delete user
-    @DeleteMapping("/users/{userid}")
-    public String deleteUser (@PathVariable int userid){
-        Users tempUser = usersService.findById(userid);
-    // throw exception if userid not found
+    // add mapping for DELETE /users/{user_id} - delete user
+    @DeleteMapping("/users/{user_id}")
+    public String deleteUser (@PathVariable int user_id){
+        Users tempUser = usersService.findById(user_id);
+    // throw exception if user_id not found
     if (tempUser == null){
-        throw new RuntimeException("userid Not Found" + userid);
+        throw new RuntimeException("user_id Not Found" + user_id);
     }
 
-    usersService.deleteById(userid);
-    return "Deleted user with id: " + userid;
+    usersService.deleteById(user_id);
+    return "Deleted user with id: " + user_id;
     }
 }
