@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.groupproject.telecomproject.entity.Users;
 import com.groupproject.telecomproject.service.UsersService;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/")
 public class UsersRestController {
 
     private UsersService usersService;
@@ -27,10 +28,7 @@ public class UsersRestController {
         usersService = theUsersService;
     }
     //expose "/home"
-    @GetMapping("/home")
-    public String home(){
-        return ("<h1>Welcome</h1>");
-    }
+
     @GetMapping("/user")
     public String user(){
         return ("<h1>Welcome User</h1>");
