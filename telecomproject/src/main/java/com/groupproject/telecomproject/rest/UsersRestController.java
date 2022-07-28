@@ -26,6 +26,15 @@ public class UsersRestController {
     public UsersRestController(UsersService theUsersService) {
         usersService = theUsersService;
     }
+    //expose "/home"
+    @GetMapping("/home")
+    public String home(){
+        return ("<h1>Welcome</h1>");
+    }
+    @GetMapping("/user")
+    public String user(){
+        return ("<h1>Welcome User</h1>");
+    }
 
     //expose "/users" and return list of users
     @GetMapping("/users")
