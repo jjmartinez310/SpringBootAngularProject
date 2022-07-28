@@ -1,9 +1,9 @@
 package com.groupproject.telecomproject.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.groupproject.telecomproject.dao.PlansRepository;
@@ -12,43 +12,38 @@ import com.groupproject.telecomproject.entity.Plans;
 @Service
 public class PlansServiceImpl implements PlansService {
 
-    private PlansRepository plansRepository;
-    
-    @Autowired
-    public PlansServiceImpl (PlansRepository thePlansRepository){
-        plansRepository = thePlansRepository;
-    }
+    //Plan Repo
+	@Autowired
+	PlansRepository repo;
+	
+	/**
+	 * GET all plans
+	 */
+	public List<Plans> findAll() {
+		List<Plans> allPlans = repo.findAll();
+		return allPlans;
+	}
+	
+	/**
+	 * POST a plan
+	 */
+	public Plans save(Plans plan) {
+		Plans newPlan = repo.save(plan);
+		return newPlan;
+	}
+	
+	/**
+	 * DELETE a plan
+	 */
+	public void delete(@Param("id") int id) {
+		 repo.delete(id);
+	}
 
-    @Override
-    public List<Plans> findAll() {
-        return plansRepository.findAll();
-    }
-
-    @Override
-    public Plans findById(int id) {
-        Optional<Plans> result = plansRepository.findById(id);
-
-        Plans thePlans = null;
-        
-        if (result.isPresent()) {
-            thePlans = result.get();
-        }
-        else {
-            throw new RuntimeException("Did not find plan id");
-        }
-        return thePlans;
-    }
-
-    @Override
-    public void save(Plans plan) {
-        plansRepository.save(plan);
-        
-    }
-
-    @Override
-    public void deleteById(int id) {
-        plansRepository.deleteById(id);
-        
-    }
+    /**
+	 * GET plans by user id
+	 */
+	public List<Plans> findByUser(int userId) {
+		return repo.findByUser(userId);
+	}
     
 }

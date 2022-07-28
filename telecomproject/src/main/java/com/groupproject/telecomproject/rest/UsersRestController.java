@@ -6,81 +6,47 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 
 import com.groupproject.telecomproject.entity.Users;
 import com.groupproject.telecomproject.service.UsersService;
 
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/users")
 public class UsersRestController {
+    //Customer service
+	@Autowired
+	UsersService service;
+	
+	/**
+	 * GET all users
+	 */
+	@GetMapping
+	public ResponseEntity<List<Users>> findAll() {
+		List<Users> allCustomers = service.findAll();
+		return new ResponseEntity<>(allCustomers, HttpStatus.OK);
+	}
+	
+	/**
+	 * POST a user
+	 */
+	@PostMapping("new")	
+	public ResponseEntity<Users> save(@RequestBody Users user) {
+		Users newUser = service.save(user);
+		return new ResponseEntity<>(newUser, HttpStatus.CREATED); 
+	} 
 
-    private UsersService usersService;
-
-    @Autowired
-    public UsersRestController(UsersService theUsersService) {
-        usersService = theUsersService;
-    }
-    //expose "/home"
-
-    @GetMapping("/user")
-    public String user(){
-        return ("<h1>Welcome User</h1>");
-    }
-
-    //expose "/users" and return list of users
-    @GetMapping("/users")
-    public List<Users> findAll() {
-        return usersService.findAll();
-    }
-
-    // add mapping for GET /users/{user_id}
-    @GetMapping("/users/{user_id}")
-    public Users getUsers(@PathVariable int user_id) {
-        Users user = usersService.findById(user_id);
-    //throw exception if user_id not found
-        if (user == null){
-            throw new RuntimeException("user_id Not Found" + user_id);
-        }
-
-        return user;
-    }
-
-    // add mapping for POST /users - add new user
-    @PostMapping("/users")
-    public Users addUser (@RequestBody Users user){
-        //also just in case they pass an id in JSON... set id to 0
-        //this is to force a save of new item...instead of update
-
-        user.setUser_id(0);
-
-        usersService.save(user);
-        return user;
-    }
-
-    // add mapping for PUT /users - update existing user
-    @PutMapping("/users")
-    public Users updateUser ( @RequestBody Users user){
-        usersService.save(user);
-        return user;
-    }
-
-    // add mapping for DELETE /users/{user_id} - delete user
-    @DeleteMapping("/users/{user_id}")
-    public String deleteUser (@PathVariable int user_id){
-        Users tempUser = usersService.findById(user_id);
-    // throw exception if user_id not found
-    if (tempUser == null){
-        throw new RuntimeException("user_id Not Found" + user_id);
-    }
-
-    usersService.deleteById(user_id);
-    return "Deleted user with id: " + user_id;
-    }
+    /**
+	 * GET all by user id
+	 */
+	@GetMapping("/{id}")
+	public ResponseEntity<List<Users>> findByUser(@PathVariable("id") int id) {
+		System.out.println("findByUser() " + id);
+		return new ResponseEntity<List<Users>>(service.findByUser(id), HttpStatus.OK);
+	}
 }

@@ -10,13 +10,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.groupproject.telecomproject.entity.Users;
 
 public class MyUserDetails implements UserDetails {
-    private String user_id;
+    private int user_id;
     private String username;
     private String pass;
     private String first_name;
     private String last_name;
 
     public MyUserDetails(Users users) {
+        this.user_id = users.getUser_id();
         this.username = users.getUsername();
         this.pass = users.getPass();
         this.first_name = users.getFirst_name();

@@ -7,7 +7,7 @@ import { Plan } from '../_models/plan'
   providedIn: 'root'
 })
 export class PlanService {
-  url: string = "http://localhost:8080/api/plans"
+  url: string = "http://localhost:8080/plans"
 
   constructor(private http: HttpClient) { }
 

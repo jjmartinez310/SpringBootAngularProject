@@ -7,9 +7,9 @@ import com.groupproject.telecomproject.entity.Devices;
 public interface DevicesService {
     public List<Devices> findAll();
 
-    public Devices findById(int id);
+    public Devices save(Devices device);
 
-    public void save(Devices device);
-    
-    public void deleteById(int id);
+    public void delete(String name);
+
+    public List<Devices> findByPlan(int planId); 
 }

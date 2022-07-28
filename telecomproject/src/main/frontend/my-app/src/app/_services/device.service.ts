@@ -7,7 +7,7 @@ import { Device } from '../_models/device'
   providedIn: 'root'
 })
 export class DeviceService {
-  url: string = "http://localhost:8080/api/devices"
+  url: string = "http://localhost:8080/devices"
 
   constructor(private http: HttpClient) { }
 
