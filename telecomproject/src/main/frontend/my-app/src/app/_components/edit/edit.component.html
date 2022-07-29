@@ -1,0 +1,144 @@
+<div class="background-border">
+</div>
+<div class="plan-page-container">
+  <div>
+    <h1 class="page-header">
+        Update Plans
+    </h1>
+
+    <div class="device-creation-container">
+            <div>
+              <div class="num-devices container">
+                <div class="device-items shadow card">
+                    <h2>How many devices do you need?</h2>
+                    <div class="center-this">
+                        <div>
+
+                            <span id="currentPhones">1</span>
+                            <button class="btn-success" (click)="increment()">+</button>
+                        </div>
+                        <div>
+                          <span>
+                            &nbsp; Max of (
+                          </span>
+                          <span id="maxPhones">
+                            1
+                          </span>
+                          <span>
+                            )
+                          </span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="plan-card-container">
+              <section class="pricing">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="card ">
+                        <div class="card-body" id="plan1">
+                          <h5 class="card-title text-muted text-uppercase text-center">SINGLE</h5>
+                          <h6 class="card-price text-center">$24.99<span class="period">/month</span></h6>
+                          <hr>
+                          <ul class="fa-ul">
+                            <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>One Device Max</strong></li>
+                            <li><span class="fa-li"><i class="fas fa-check"></i></span>4G Data, Unlimited Talk and Text</li>
+                          </ul>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="card ">
+                        <div class="card-body" id="plan2">
+                          <h5 class="card-title text-muted text-uppercase text-center">ECONOMY</h5>
+                          <h6 class="card-price text-center">$69.99<span class="period">/month</span></h6>
+                          <hr>
+                          <ul class="fa-ul">
+                            <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Three Devices Max</strong></li>
+                            <li><span class="fa-li"><i class="fas fa-check"></i></span>5G Data, Unlimited Talk and Text</li>
+                          </ul>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="card ">
+                        <div class="card-body" id="plan3">
+                          <h5 class="card-title text-muted text-uppercase text-center">FAMILY</h5>
+                          <h6 class="card-price text-center">$129.99<span class="period">/month</span></h6>
+                          <hr>
+                          <ul class="fa-ul">
+                            <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Six Device Max</strong></li>
+                            <li><span class="fa-li"><i class="fas fa-check"></i></span>Unlimited 5G Data, Talk and Text</li>
+                          </ul>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+          </div>
+          <div class="devices-info">
+            <form class="form-inline form-container shadow form-bg">
+              <div class="form-item-container">
+                <div class="form-labels">
+                  <div>
+                      Device Name:
+                  </div>
+                  <div>
+                      Device Number:
+                  </div>
+                  <div>
+                      Device Model:
+                  </div>
+                </div>
+                <form id="my-form">
+                  <div class="form-item-container no-margin" *ngFor="let dev of Devices; let i = index">
+                    <input class="form-item" type="tel" id="name" placeholder="Device Name" name="deviceName" value={{dev.deviceName}} (change)="changeHandler()">
+                    <input class="form-item" type="tel" id="phone" placeholder="Device Number" name="deviceNumber" value={{dev.deviceNumber}} (change)="changeHandler()">
+                    <input class="form-item" type="text" id="model" placeholder="Device Model" name="deviceModel" value={{dev.deviceModel}} (change)="changeHandler()">
+                    <button id="delete" (click)="deleteDevice(dev.id, i)">Delete</button>
+                </div>
+                </form>
+              </div>
+            </form>
+
+
+      </div>
+        </div>
+      </div>
+      <br>
+      <p *ngIf="this.warningMessage" class="text-center alert alert-danger " role="alert">{{warningMessage}}</p>
+      <div class="button-container-plan">
+
+            <div class="submit-button">
+                <button *ngIf="!this.warningMessage" class="button-styling" (click)="updatePlan()">
+                  Update Plan
+                </button>
+                <button *ngIf="this.warningMessage" class="button-styling">
+                  ERROR
+                </button>
+      </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+            <div *ngIf="this.errorMessage">
+              {{this.errorMessage}}
+            </div>
+
+

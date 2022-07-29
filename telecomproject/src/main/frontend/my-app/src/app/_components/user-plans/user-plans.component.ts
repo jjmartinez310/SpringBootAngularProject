@@ -60,6 +60,6 @@ export class UserPlansComponent implements OnInit {
   }
 
   redirect() {
-    this.router.navigateByUrl('/addplans');
+    this.router.navigateByUrl('/addPlans');
   }
 }

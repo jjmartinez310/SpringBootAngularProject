@@ -6,7 +6,7 @@
       Create a Plan
     </h1>
     <h1 *ngIf="typeOf(this.userId) != 'number'" class="page-header text-center" style="margin: 50px">
-      What We Offer
+      Plans we offer
     </h1>
     <div class="device-creation-container">
       <div>
@@ -16,9 +16,9 @@
             <h2 class="how-many text-center" style="margin-top: 10px">How Many Devices Do You Need?</h2>
             <div class="center-this">
               <div>
-                <span class="minus-button" (click)="decrement()">-</span>
+                <button class="btn btn-outline-danger" (click)="decrement()">-</button>
                 <span id="currentPhones">1</span>
-                <span class="plus-button" (click)="increment()">+</span>
+                <button class="btn btn-outline-success" (click)="increment()">+</button>
               </div>
               <div>
                 <span>
@@ -42,20 +42,15 @@
                 <div class="col-lg-4">
                   <div class="card">
                     <div class="card-body" id="plan1">
-                      <h5 class="card-title text-muted text-uppercase
-                        text-center">SINGLE</h5>
-                      <h6 class="card-price text-center">$24.99<span
-                          class="period">/month</span></h6>
+                      <h5 class="card-title text-muted text-uppercase text-center">SINGLE</h5>
+                      <h6 class="card-price text-center">$24.99<span class="period">/month</span></h6>
                       <hr>
                       <ul class="fa-ul">
-                        <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>One
-                            Device Max</strong></li>
-                        <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>5 GB/Month of Data </strong></li>
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>One Device Max</strong></li>
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>4G Data, Unlimited Talk and Text</strong></li>
                       </ul>
                       <div class="d-grid">
-                        <a *ngIf="typeOf(this.userId) === 'number'"
-                          (click)="selectPlan('SINGLE')" class="btn btn-primary
-                          text-uppercase">SELECT</a>
+                        <a *ngIf="typeOf(this.userId) === 'number'" (click)="selectPlan('SINGLE')" class="btn btn-primary text-uppercase">SELECT</a>
                       </div>
                     </div>
                   </div>
@@ -64,15 +59,12 @@
                 <div class="col-lg-4">
                   <div class="card">
                     <div class="card-body" id="plan2">
-                      <h5 class="card-title text-muted text-uppercase
-                        text-center">ECONOMY</h5>
-                      <h6 class="card-price text-center">$69.99<span
-                          class="period">/month</span></h6>
+                      <h5 class="card-title text-muted text-uppercase text-center">ECONOMY</h5>
+                      <h6 class="card-price text-center">$69.99<span class="period">/month</span></h6>
                       <hr>
                       <ul class="fa-ul">
-                        <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Three
-                            Devices Max</strong></li>
-                            <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>20 GB/Month of Data </strong></li>
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Three Devices Max</strong></li>
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>5G Data, Unlimited Talk and Text</strong></li>
                       </ul>
                       <div class="d-grid">
                         <a *ngIf="typeOf(this.userId) === 'number'"
@@ -86,20 +78,15 @@
                 <div class="col-lg-4">
                   <div class="card">
                     <div class="card-body" id="plan3">
-                      <h5 class="card-title text-muted text-uppercase
-                        text-center">FAMILY</h5>
-                      <h6 class="card-price text-center">$129.99<span
-                          class="period">/month</span></h6>
+                      <h5 class="card-title text-muted text-uppercase text-center">FAMILY</h5>
+                      <h6 class="card-price text-center">$129.99<span class="period">/month</span></h6>
                       <hr>
                       <ul class="fa-ul">
-                        <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Six
-                            Device Max</strong></li>
-                            <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited Data </strong></li>
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Six Device Max</strong></li>
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Unlimited 5G Data, Talk and Text</strong></li>
                       </ul>
                       <div class="d-grid">
-                        <a *ngIf="typeOf(this.userId) === 'number'"
-                          (click)="selectPlan('FAMILY')" class="btn btn-primary
-                          text-uppercase">SELECT</a>
+                        <a *ngIf="typeOf(this.userId) === 'number'" (click)="selectPlan('FAMILY')" class="btn btn-primary text-uppercase">SELECT</a>
                       </div>
                     </div>
                   </div>
@@ -125,11 +112,9 @@
       </div>
 
       <div *ngIf="typeOf(this.userId) != 'number'" class="text-center" style="margin: 50px">
-        <h3><a [routerLink]="['/login']">Login</a> to create your own plan!</h3>
-        <p>We offer the best prices around.... no seriously! <br/> Pick the plan
-            that best fits your needs.</p>
-          <p class="small">Don't have an account? <a [routerLink]="['/signup']">Make
-              One Here!</a></p>
+        <h3><a [routerLink]="['/login']">Login</a> to a plan!</h3>
+        <p>We offer the best prices for you and your family</p>
+          <p class="small">Want an account? <a [routerLink]="['/signup']">Create one!</a></p>
         </div>
       </div>
     </div>

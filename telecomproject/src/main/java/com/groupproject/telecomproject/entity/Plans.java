@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 @Table(name="plans")
 public class Plans {
 
-    // define fields
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
@@ -28,7 +27,6 @@ public class Plans {
     @Column(name="user_id")
     private int userId;
 
-    // define constructors
 
     public Plans() {
 
@@ -41,7 +39,6 @@ public class Plans {
         this.userId = userId;
     }
    
-    //define getter/setter
 
     public int getId() {
         return id;
@@ -77,8 +74,6 @@ public class Plans {
     public void setUserId(int userId) {
         this.userId = userId;
     }
-
-    //define toString
 
     @Override
     public String toString() {

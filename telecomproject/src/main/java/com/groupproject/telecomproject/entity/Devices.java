@@ -13,7 +13,6 @@ import javax.persistence.GenerationType;
         uniqueConstraints = @UniqueConstraint(columnNames = {"deviceNumber"}))
 public class Devices {
 
-    // define fields
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
@@ -30,7 +29,6 @@ public class Devices {
     @Column(name="plan_id")
     private int planId;
 
-    // define constructors
 
     public Devices() {
 
@@ -42,8 +40,7 @@ public class Devices {
         this.deviceModel = deviceModel;
         this.planId = planId;
     }
-   
-    //define getter/setter
+
 
     public int getId() {
         return id;
@@ -79,7 +76,6 @@ public class Devices {
         this.planId = planId;
     }
 
-    //define toString
 
     @Override
     public String toString() {

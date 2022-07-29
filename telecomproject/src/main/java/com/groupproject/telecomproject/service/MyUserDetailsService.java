@@ -23,12 +23,6 @@ public class MyUserDetailsService implements UserDetailsService {
         if (_user == null) {
             throw new UsernameNotFoundException("test");
         }
-        // Have to sign in as Admin to Delete anything
-        else if(_user.getUsername().equals("barry")) {
-            UserDetails user = User.withUsername(_user.getUsername()).password(_user.getPass()).authorities("ADMIN").build();
-            System.out.println(_user.getUsername() + " has attempted to login " + user.getAuthorities());
-            return user;
-        }
         else{
             UserDetails user = User.withUsername(_user.getUsername()).password(_user.getPass()).authorities("USER").build();
             System.out.println(_user.getUsername() + " has attempted to login " + user.getAuthorities());

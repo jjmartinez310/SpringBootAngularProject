@@ -17,7 +17,6 @@ public interface DevicesRepository extends JpaRepository<Devices, Integer> {
 
 	public Devices findByDeviceName(String deviceName);
 
-	// Selects devices owned by specific user
 	@Query( "SELECT d FROM Devices d WHERE d.planId = :id" )
     public List<Devices> findDevicesByPlanId(@Param("id") int id);
     

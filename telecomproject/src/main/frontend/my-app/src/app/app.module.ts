@@ -15,6 +15,8 @@ import { HomeComponent } from './_components/home/home.component';
 import { UserPlansComponent } from './_components/user-plans/user-plans.component';
 import { PlansComponent } from './_components/plans/plans.component';
 import { ListComponent } from './_components/list/list.component';
+import { EditComponent } from './_components/edit/edit.component';
+import { UserInfoComponent } from './_components/user-info/user-info.component';
 
 
 @Injectable()
@@ -38,6 +40,8 @@ export class XhrInterceptor implements HttpInterceptor {
     UserPlansComponent,
     PlansComponent,
     ListComponent,
+    EditComponent,
+    UserInfoComponent,
   ],
   imports: [
     BrowserModule,

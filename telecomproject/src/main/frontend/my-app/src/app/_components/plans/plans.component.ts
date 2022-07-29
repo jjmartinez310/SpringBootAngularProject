@@ -105,7 +105,7 @@ export class PlansComponent implements OnInit {
       let maxPhones = document.getElementById("maxPhones");
       if (currentPhones && maxPhones) {
 
-        maxPhones.innerHTML = "12";
+        maxPhones.innerHTML = "6";
 
       }
       this.Plan.planName = "FAMILY";
@@ -154,7 +154,6 @@ export class PlansComponent implements OnInit {
 
           if (this.selected === true) {
 
-            // Saves Plan to database
             try {
               this.planService.savePlan(this.Plan).subscribe(data => {
                 if (data.body != null || data.body != undefined) {
@@ -187,10 +186,7 @@ export class PlansComponent implements OnInit {
 
   ngOnInit(): void {
     this.planService.findPlansByUser(this.userId).subscribe((data) => {
-      // logs all plans for current user
-      // console.log(data.body);
       if (data.body != null) {
-        //this.Plan = data.body;
       }
     });
   }

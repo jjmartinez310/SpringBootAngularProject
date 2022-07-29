@@ -14,7 +14,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 @Table(name="users")
 public class Users {
 
-    // define fields
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
@@ -31,7 +30,6 @@ public class Users {
     @Column(name="pass")
     private String pass;
 
-    // define constructors
 
     public Users() {
 
@@ -43,8 +41,7 @@ public class Users {
         this.username = username;
         this.pass = pass;
     }
-   
-    //define getter/setter
+
 
     public int getId() {
         return id;
@@ -81,8 +78,6 @@ public class Users {
     public void setPass(String pass) {
         this.pass = pass;
     }
-
-    //define toString
 
     @Override
     public String toString() {
