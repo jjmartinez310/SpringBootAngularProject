@@ -1,0 +1,149 @@
+<div class="background-border">
+</div>
+<div class="plans-container">
+  <div>
+    <h1 *ngIf="typeOf(this.userId) === 'number'" class="page-header">
+      Create a Plan
+    </h1>
+    <h1 *ngIf="typeOf(this.userId) != 'number'" class="page-header">
+      What We Offer
+    </h1>
+    <div class="device-creation-container">
+      <div>
+        <div *ngIf="typeOf(this.userId) === 'number'" class="num-devices
+          container">
+          <div class="device-items shadow card">
+            <h2>How many devices do you need?</h2>
+            <div class="center-this">
+              <div>
+                <span class="minus-button" (click)="decrement()">-</span>
+                <span id="currentPhones">1</span>
+                <span class="plus-button" (click)="increment()">+</span>
+              </div>
+              <div>
+                <span>
+                  &nbsp; Max of (
+                </span>
+                <span id="maxPhones">
+                  1
+                </span>
+                <span>
+                  )
+                </span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="plan-card-container">
+          <section class="pricing">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="card">
+                    <div class="card-body" id="plan1">
+                      <h5 class="card-title text-muted text-uppercase
+                        text-center">SINGLE</h5>
+                      <h6 class="card-price text-center">$24.99<span
+                          class="period">/month</span></h6>
+                      <hr>
+                      <ul class="fa-ul">
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>One
+                            Device Max</strong></li>
+                      </ul>
+                      <div class="d-grid">
+                        <a *ngIf="typeOf(this.userId) === 'number'"
+                          (click)="selectPlan('SINGLE')" class="btn btn-primary
+                          text-uppercase">SELECT</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="card">
+                    <div class="card-body" id="plan2">
+                      <h5 class="card-title text-muted text-uppercase
+                        text-center">ECONOMY</h5>
+                      <h6 class="card-price text-center">$69.99<span
+                          class="period">/month</span></h6>
+                      <hr>
+                      <ul class="fa-ul">
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Three
+                            Devices Max</strong></li>
+                      </ul>
+                      <div class="d-grid">
+                        <a *ngIf="typeOf(this.userId) === 'number'"
+                          (click)="selectPlan('ECONOMY')" class="btn btn-primary
+                          text-uppercase">SELECT</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="card">
+                    <div class="card-body" id="plan3">
+                      <h5 class="card-title text-muted text-uppercase
+                        text-center">FAMILY</h5>
+                      <h6 class="card-price text-center">$129.99<span
+                          class="period">/month</span></h6>
+                      <hr>
+                      <ul class="fa-ul">
+                        <li><span class="fa-li"><i class="fas fa-check"></i></span><strong>Six
+                            Device Max</strong></li>
+                      </ul>
+                      <div class="d-grid">
+                        <a *ngIf="typeOf(this.userId) === 'number'"
+                          (click)="selectPlan('FAMILY')" class="btn btn-primary
+                          text-uppercase">SELECT</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+      </div>
+      <div *ngIf="typeOf(this.userId) === 'number'" class="devices-info">
+        <form class="form-inline form-container shadow form-bg">
+          <div class="form-item-container">
+            <div class="form-labels">
+              <div>
+                Phone Number:
+              </div>
+              <div>
+                Phone Model:
+              </div>
+            </div>
+            <form id="my-form">
+              <app-list *ngFor="let line of lines" (change)="changeHandler()"></app-list>
+            </form>
+          </div>
+        </form>
+      </div>
+
+      <div *ngIf="this.errorMessage" class="text-center alert alert-danger " role="alert">
+        {{this.errorMessage}}
+      </div>
+
+      <div *ngIf="typeOf(this.userId) != 'number'" class="text-center">
+        <h3><a [routerLink]="['/login']">Login</a> to create your own plan!</h3>
+        <p>We offer the best prices around.... no seriously! <br/> Pick the plan
+            that best fits your needs.</p>
+          <p class="small">Don't have an account? <a [routerLink]="['/signup']">Make
+              One Here!</a></p>
+        </div>
+      </div>
+    </div>
+    <p *ngIf="this.warningMessage" class="text-center alert alert-danger " role="alert">{{warningMessage}}</p>
+    <div class="button-container-plan">
+      <div *ngIf="typeOf(this.userId) === 'number'" class="submit-button">
+        <button class="button-styling" (click)="submitPlan()">
+          Create Plan
+        </button>
+      </div>
+    </div>
+  </div>

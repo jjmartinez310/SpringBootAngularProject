@@ -2,32 +2,33 @@ package com.groupproject.telecomproject.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
 import javax.persistence.GenerationType;
 
 @Entity
-@Table(name="devices")
+@Table(name="devices",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"deviceNumber"}))
 public class Devices {
 
     // define fields
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="device_id")
-    private int device_id;
+    private int id;
     
-    @Column(name="device_name")
-    private String device_name;
+    @Column(name="deviceName")
+    private String deviceName;
 
-    @Column(name="device_number")
-    private String device_number;
+    @Column(name="deviceNumber")
+    private String deviceNumber;
 
-    @Column(name="device_model")
-    private String device_model;
+    @Column(name="deviceModel")
+    private String deviceModel;
 
     @Column(name="plan_id")
-    private int plan_id;
+    private int planId;
 
     // define constructors
 
@@ -35,59 +36,54 @@ public class Devices {
 
     }
 
-    public Devices(int device_id, String device_name, String device_number, String device_model, int plan_id) {
-        this.device_id = device_id;
-        this.device_name = device_name;
-        this.device_number = device_number;
-        this.device_model = device_model;
-        this.plan_id = plan_id;
+    public Devices(String deviceName, String deviceNumber, String deviceModel, int planId) {
+        this.deviceName = deviceName;
+        this.deviceNumber = deviceNumber;
+        this.deviceModel = deviceModel;
+        this.planId = planId;
     }
    
     //define getter/setter
 
-    public int getDevice_id() {
-        return device_id;
+    public int getId() {
+        return id;
     }
 
-    public void setDevice_id(int device_id) {
-        this.device_id = device_id;
+    public String getDeviceName() {
+        return deviceName;
     }
 
-    public String getDevice_name() {
-        return device_name;
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
     }
 
-    public void setDevice_name(String device_name) {
-        this.device_name = device_name;
+    public String getDeviceNumber() {
+        return deviceNumber;
     }
 
-    public String getDevice_number() {
-        return device_number;
+    public void setDeviceNumber(String deviceNumber) {
+        this.deviceNumber = deviceNumber;
+    }
+    public String getDeviceModel() {
+        return deviceModel;
     }
 
-    public void setDevice_number(String device_number) {
-        this.device_number = device_number;
+    public void setDeviceModel(String deviceModel) {
+        this.deviceModel = deviceModel;
     }
-    public String getDevice_model() {
-        return device_model;
-    }
-
-    public void setDevice_model(String device_model) {
-        this.device_model = device_model;
-    }
-    public int getPlan_id() {
-        return plan_id;
+    public int getPlanId() {
+        return planId;
     }
 
-    public void setPlan_id(int plan_id) {
-        this.plan_id = plan_id;
+    public void setPlanId(int planId) {
+        this.planId = planId;
     }
 
     //define toString
 
     @Override
     public String toString() {
-        return "Devices [device_name=" + device_name + ", device_number=" + device_number + ", device_model=" + device_model + "]";
+        return "Devices [deviceName=" + deviceName + ", device_id="+ id + "deviceNumber=" + deviceNumber + ", deviceModel=" + deviceModel + ", plan_id" + planId + "]";
     }
 
 

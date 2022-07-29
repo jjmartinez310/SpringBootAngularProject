@@ -1,0 +1,56 @@
+
+<div *ngIf="User?.firstName">
+    <table>
+      <thead>
+        <tr>
+          <th>Plan Name</th>
+          <th>Device Limit</th>
+          <th>Price</th>
+    
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let plan of Plans">
+          <td>
+            <div>
+              <div class="ms-3">
+                <p class="fw-bold mb-1">{{plan.planName}}</p>
+                <p class="text-muted mb-0">#{{plan.id}}</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <p class="fw-normal mb-1">Total Devices: {{plan.planNumlines}}</p>
+          </td>
+    
+          <td>${{plan.planPrice}}</td>
+          <td style="text-align: right; ">
+            <button type="button"[routerLink] = "['/update', plan.id]">
+                    <a [routerLink] = "['/update', plan.id]">Edit</a>
+    
+            </button>
+            <button type="button">
+                    <a (click)="deletePlan(plan.id)">Delete</a>
+    
+            </button>
+    
+          </td>
+        </tr>
+    
+      </tbody>
+    </table>
+    <div class="button-container">
+        <button (click)="redirect()" type="button" class="btn btn-primary">Add Plan</button>
+    </div>
+    <div class="total-container">
+        <div class="card shadow" style="width: 500px;">
+            <div class="card-body">
+              <h5 class="card-title">Monthly Bill</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Account Total ${{TotalCost}}</h6>
+              <a routerLink class="card-link">Home Page</a>
+            </div>
+          </div>
+    </div>
+    </div>
+    

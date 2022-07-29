@@ -1,0 +1,6 @@
+<h1 *ngIf="User?.firstName" class="profile-header">Welcome Back {{User?.firstName}} {{User?.lastName}}</h1>
+<div *ngIf="!User">
+    <h1  class="profile-header">Uh Oh</h1>
+    <p class="text-center">User Session Error. Please <a href="/login">login</a>.</p>
+</div>
+

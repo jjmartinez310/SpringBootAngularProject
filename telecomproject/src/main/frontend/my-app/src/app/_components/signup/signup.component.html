@@ -1,0 +1,92 @@
+<!-- Section: Design Block -->
+<section class="">
+    <!-- Jumbotron -->
+    <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+      <div class="container">
+        <div class="row gx-lg-5 align-items-center">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <h1 class="my-5 display-3 fw-bold ls-tight">
+              The best offer <br />
+              <span class="text-primary">for your family or business</span>
+            </h1>
+            <p style="color: hsl(217, 10%, 50.8%)">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Eveniet, itaque accusantium odio, soluta, corrupti aliquam
+              quibusdam tempora at cupiditate quis eum maiores libero
+              veritatis? Dicta facilis sint aliquid ipsum atque?
+            </p>
+          </div>
+  
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="card">
+              <div class="card-body py-5 px-md-5">
+                <form (ngSubmit)="create(); userForm.reset()"  #userForm>
+                  <!-- 2 column grid layout with text inputs for the first and last names -->
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <input [(ngModel)]="credentials.firstName" type="text" class="form-control" name="FirstName" id="FirstName" #FirstName="ngModel"/>
+                        <label class="form-label" for="form3Example1">First name</label>
+                      </div>
+                      <div  *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)">
+                        <div *ngIf="FirstName.errors?.['required']"><span style="color: red">First Name is required</span></div>
+                      </div>
+                      </div>
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <input [(ngModel)]="credentials.lastName" type="text" class="form-control" name="LastName" id="LastName" #LastName="ngModel"/>
+                          <label class="form-label" for="form3Example2">Last name</label>
+                        </div>
+                      </div>
+                      <div  *ngIf="LastName.invalid && (LastName.dirty || LastName.touched)">
+                        <div *ngIf="LastName.errors?.['required']"><span style="color: red">Last Name is required</span></div>
+                      </div>
+                  </div>
+  
+                  <!-- Email input -->
+                  <div class="form-outline mb-4">
+                    <input [(ngModel)]="credentials.username" type="Username" name="Username" class="form-control" required #Username="ngModel" />
+                    <label class="form-label" for="form3Example3">Username</label>
+                  </div>
+
+                  <div  *ngIf="Username.invalid && (Username.dirty || Username.touched)">
+                    <div *ngIf="Username.errors?.['required']"><span style="color: red">Username is required</span></div>
+                  </div>
+  
+                  <!-- Password input -->
+                  <div class="form-outline mb-4">
+                    <input [(ngModel)]="credentials.pass" type="Password" name="Password" class="form-control" required #Password="ngModel" />
+                    <label class="form-label" for="form3Example4">Password</label>
+                  </div>
+
+                  <div  *ngIf="Password.invalid && (Password.dirty || Password.touched)">
+                    <div *ngIf="Password.errors?.['required']"><span style="color: red">Username is required</span></div>
+                  </div>
+  
+                  <!-- Checkbox -->
+                  <div class="form-check d-flex justify-content-center mb-4">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+                    <label class="form-check-label" for="form2Example33">
+                      Subscribe to our newsletter
+                    </label>
+                  </div>
+
+                  <div *ngIf="this.errorMessage" class="alert alert-danger" role="alert">
+                    {{errorMessage}}
+                  </div>
+  
+                  <!-- Submit button -->
+                  <button type="button" class="btn btn-primary btn-block mb-4" value="Save" (click)="create()">
+                    Sign up
+                  </button>
+  
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+  <!-- Section: Design Block -->

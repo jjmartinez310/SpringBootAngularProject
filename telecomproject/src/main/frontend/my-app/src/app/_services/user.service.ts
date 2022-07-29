@@ -11,11 +11,19 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  findAll(): Observable<HttpResponse<User[]>>{
-    return this.http.get<User[]>(this.url, { observe: 'response'});
-  }
-
-  find(id: number): Observable<HttpResponse<User>>{
-    return this.http.get<User>(this.url + `/${id}`, { observe: 'response'});
-  }
+    findUser(): Observable<HttpResponse<User>> {
+      return this.http.get<User>(this.url + "/" + sessionStorage.getItem("username"), {observe: 'response',withCredentials: true});
+    }
+    
+    saveUser(user: User): Observable<HttpResponse<User>> {
+      return this.http.post<User>(this.url + "/signup", user, {observe: 'response'});
+    }
+  
+    updateUser(user: User): Observable<HttpResponse<User>> {
+      return this.http.put<User>(this.url, user, {observe: 'response',withCredentials: true});
+    }
+  
+    deleteUser(id: number): Observable<HttpResponse<User>> {
+      return this.http.delete<User>(this.url, {observe: 'response',withCredentials: true});
+    }
 }

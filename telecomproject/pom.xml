@@ -12,7 +12,7 @@
 	<artifactId>telecomproject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>telecomproject</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Telecom Project made by Gideon and Jared</description>
 	<properties>
 		<java.version>8</java.version>
 	</properties>
@@ -54,26 +54,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
-			<plugin>
-        		<groupId>org.codehaus.mojo</groupId>
-        		<artifactId>exec-maven-plugin</artifactId>
-        		<version>3.0.0</version>
-        		<executions>
-          			<execution>
-            			<goals>
-              				<goal>exec</goal>
-            			</goals>
-          			</execution>
-        		</executions>
-        		<configuration>
-          			<executable>ng</executable>
-          			<workingDirectory>src/main/resources/frontend/my-app</workingDirectory>
-          			<arguments>
-            			<argument>build</argument>
-          			</arguments>
-        		</configuration>
-      		</plugin>
 		</plugins>
 	</build>
 

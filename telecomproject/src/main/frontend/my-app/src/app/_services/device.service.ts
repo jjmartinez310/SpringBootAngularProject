@@ -11,11 +11,24 @@ export class DeviceService {
 
   constructor(private http: HttpClient) { }
 
-  findAll(): Observable<HttpResponse<Device[]>>{
-    return this.http.get<Device[]>(this.url, { observe: 'response'});
+  findDevicesByPlan(planId: number): Observable<HttpResponse<Device[]>> {
+    return this.http.get<Device[]>(this.url + `/${planId}`, {observe: 'response', withCredentials: true});
   }
 
-  find(id: number): Observable<HttpResponse<Device>>{
-    return this.http.get<Device>(this.url + `/${id}`, { observe: 'response'});
+  findDeviceById(deviceId: number): Observable<HttpResponse<Device>> {
+    return this.http.get<Device>(this.url + `/${deviceId}`, {observe: 'response', withCredentials: true});
   }
+
+  saveDevice(device: Device): Observable<HttpResponse<Device>> {
+    return this.http.post<Device>(this.url + "/newdevice", device, {observe: 'response', withCredentials: true});
+  }
+
+  updateDevice(device: Device, deviceId: number): Observable<HttpResponse<Device>> {
+    return this.http.put<Device>(this.url + `/update/${deviceId}`, device, {observe: 'response', withCredentials: true});
+  }
+
+  deleteDevice(id: number): Observable<HttpResponse<Device>> {
+    return this.http.delete<Device>(this.url + '/' + id, {observe: 'response', withCredentials: true});
+  }
+
 }

@@ -1,15 +1,14 @@
 export class Plan {
-    plan_id: number;
-    plan_name: string;
-    plan_price: number;
-    plan_numlines: number;
-    user_id: number;
+    id!: number;
+    planName: string;
+    planPrice: number;
+    planNumlines: number;
+    userId: number;
 
-    constructor(plan_id: number, plan_name: string, plan_price: number, plan_numlines: number, user_id: number){
-        this.plan_id = plan_id;
-        this.plan_name = plan_name;
-        this.plan_price = plan_price;
-        this.plan_numlines = plan_numlines;
-        this.user_id = user_id;
+    constructor(planName: string, planPrice: number, planNumlines: number, userId: number){
+        this.planName = planName;
+        this.planPrice = planPrice;
+        this.planNumlines = planNumlines;
+        this.userId = userId;
     }
 }

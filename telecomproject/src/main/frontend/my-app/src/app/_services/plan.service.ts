@@ -11,11 +11,23 @@ export class PlanService {
 
   constructor(private http: HttpClient) { }
 
-  findAll(): Observable<HttpResponse<Plan[]>>{
-    return this.http.get<Plan[]>(this.url, { observe: 'response'});
+  findPlansByUser(userId: number): Observable<HttpResponse<Plan[]>> {
+    return this.http.get<Plan[]>(this.url + `/${userId}`, {observe: 'response', withCredentials: true});
   }
 
-  find(id: number): Observable<HttpResponse<Plan>>{
-    return this.http.get<Plan>(this.url + `/${id}`, { observe: 'response'});
+  findPlanById(planId: number): Observable<HttpResponse<Plan>> {
+    return this.http.get<Plan>(this.url + `/plan/${planId}`, {observe: 'response', withCredentials: true});
+  }
+
+  savePlan(plan: Plan): Observable<HttpResponse<Plan>> {
+    return this.http.post<Plan>(this.url + "/newplan", plan, {observe: 'response', withCredentials: true});
+  }
+
+  updatePlan(plan: Plan): Observable<HttpResponse<Plan>> {
+    return this.http.put<Plan>(this.url + `/update/${plan.id}`, plan, {observe: 'response', withCredentials: true});
+  }
+
+  deletePlan(id: number): Observable<HttpResponse<Plan>> {
+    return this.http.delete<Plan>(this.url + '/' + id, {observe: 'response', withCredentials: true});
   }
 }
